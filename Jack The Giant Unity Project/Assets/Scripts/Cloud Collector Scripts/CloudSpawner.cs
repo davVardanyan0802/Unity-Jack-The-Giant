@@ -16,14 +16,71 @@ public class CloudSpawner : MonoBehaviour
     [SerializeField]
     private GameObject[] collectables;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        controllX = 0;
+        SetMinMaxX();
+        CreateClouds();
+    }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetMinMaxX()
     {
-        
+        Vector3 bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        maxX = bounds.x - 0.5f;
+        minX = -bounds.x + 0.5f;
     }
+
+    void Shuffle(GameObject[] arrayToShuffle)
+    {
+        for(int i = 0; i < arrayToShuffle.Length; i++)
+        {
+            GameObject temp = arrayToShuffle[i];
+            int random = Random.Range(i, arrayToShuffle.Length);
+            arrayToShuffle[i] = arrayToShuffle[random];
+            arrayToShuffle[random] = temp;
+        }
+    }
+
+    void CreateClouds()
+    {
+        float positionY = 0f;
+        Shuffle(clouds);
+
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            Vector3 temp = clouds[i].transform.position;
+            temp.y = positionY;
+            temp.x = Random.Range(minX, maxX);
+            if(controllX == 0)
+            {
+                temp.x = Random.Range(0.0f, maxX);
+                controllX = 1;
+
+            }else if(controllX == 1)
+            {
+                temp.x = Random.Range(0.0f, minX);
+                controllX = 2;
+            }
+
+            else if (controllX == 2)
+            {
+                temp.x = Random.Range(1.0f, maxX);
+                controllX = 3;
+            }
+            else if (controllX == 3)
+            {
+                temp.x = Random.Range(-1.0f, minX);
+                controllX = 0;
+            }
+            lastCloudPositionY = positionY;
+            clouds[i].transform.position = temp;
+            positionY -= distanceBetweenClouds;
+        }
+    }
+
+    
 }
