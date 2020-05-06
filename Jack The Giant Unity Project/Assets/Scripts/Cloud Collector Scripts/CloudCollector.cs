@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class CloudCollector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.tag == "Cloud" || collision.tag == "Deadly")
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
 }

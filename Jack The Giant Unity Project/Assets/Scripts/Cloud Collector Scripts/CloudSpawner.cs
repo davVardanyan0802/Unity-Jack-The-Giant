@@ -11,6 +11,7 @@ public class CloudSpawner : MonoBehaviour
     private float minX, maxX;
     private float lastCloudPositionY;
     private float controllX;
+    private GameObject player;
 
     [SerializeField]
     private GameObject[] collectables;
