@@ -38,4 +38,6 @@ public class CameraScript : MonoBehaviour
             speed = maxSpeed;
         }
     }
+
+   
 }

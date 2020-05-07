@@ -9,7 +9,7 @@ public class CloudSpawner : MonoBehaviour
     private GameObject[] clouds;
     private  float distanceBetweenClouds = 3f;
     private float minX, maxX;
-    private float lastCloudPositionY;
+    public float lastCloudPositionY;
     private float controllX;
     private GameObject player;
 
@@ -77,6 +77,7 @@ public class CloudSpawner : MonoBehaviour
                 temp.x = Random.Range(-1.0f, minX);
                 controllX = 0;
             }
+
             lastCloudPositionY = positionY;
             clouds[i].transform.position = temp;
             positionY -= distanceBetweenClouds;
@@ -114,5 +115,54 @@ public class CloudSpawner : MonoBehaviour
         temp.y += 0.8f;
         player.transform.position = temp;
 
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Cloud" || collision.tag == "Deadly")
+        {
+            if (collision.transform.position.y == lastCloudPositionY )
+            {
+                Shuffle(clouds);
+                Shuffle(collectables);
+                Vector3 temp = collision.transform.position;
+
+                for (int i = 0; i < clouds.Length; i++)
+                {
+                    if (!clouds[i].activeInHierarchy)
+                    {
+
+                        if (controllX == 0)
+                        {
+                            temp.x = Random.Range(0.0f, maxX);
+                            controllX = 1;
+
+                        }
+                        else if (controllX == 1)
+                        {
+                            temp.x = Random.Range(0.0f, minX);
+                            controllX = 2;
+                        }
+
+                        else if (controllX == 2)
+                        {
+                            temp.x = Random.Range(1.0f, maxX);
+                            controllX = 3;
+                        }
+                        else if (controllX == 3)
+                        {
+                            temp.x = Random.Range(-1.0f, minX);
+                            controllX = 0;
+
+                        }
+
+                        temp.y  -= distanceBetweenClouds;
+                        lastCloudPositionY = temp.y;
+                        clouds[i].transform.position = temp;
+                        clouds[i].SetActive(true);
+                    }
+ }
+            }
+        }
     }
 }
