@@ -11,4 +11,6 @@ public class CloudCollector : MonoBehaviour
             collision.gameObject.SetActive(false);
         }
     }
+
+    
 }
