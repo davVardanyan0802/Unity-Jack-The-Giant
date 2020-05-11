@@ -71,18 +71,20 @@ public class PlayerScore : MonoBehaviour
         if(target.tag == "Bounds"){
             cameraScript.moveCamera = false;
             countScore = false;
-            GameplayController.instance.GameOverShowPanel(scoreCount,coinCount);
+            
             transform.position = new Vector3(500,500,0);
             lifeCount--;
+             GameMengr.instance.CheckGameStatus(scoreCount,coinCount,lifeCount);
            
         }
 
         if(target.tag == "Deadly"){
             cameraScript.moveCamera = false;
             countScore = false;
-            GameplayController.instance.GameOverShowPanel(scoreCount,coinCount);
+           
             transform.position = new Vector3(500,500,0);
             lifeCount--;
+            GameMengr.instance.CheckGameStatus(scoreCount,coinCount,lifeCount);
             
         }
     }
