@@ -992,6 +992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db4dfeb644356478f9f7dc15a707b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  easySign: {fileID: 780682174}
+  mediumSign: {fileID: 641531910}
+  hardSign: {fileID: 1070321303}
 --- !u!4 &1652994852
 Transform:
   m_ObjectHideFlags: 0
