@@ -68,7 +68,7 @@ public class PlayerScore : MonoBehaviour
             target.gameObject.SetActive(false);
         }
 
-        if(target.tag == "Bounds"){
+        if(target.tag == "Bounds" || target.tag == "Deadly"){
             cameraScript.moveCamera = false;
             countScore = false;
             
@@ -78,14 +78,14 @@ public class PlayerScore : MonoBehaviour
            
         }
 
-        if(target.tag == "Deadly"){
-            cameraScript.moveCamera = false;
-            countScore = false;
+        // if(target.tag == "Deadly"){
+        //     cameraScript.moveCamera = false;
+        //     countScore = false;
            
-            transform.position = new Vector3(500,500,0);
-            lifeCount--;
-            GameMengr.instance.CheckGameStatus(scoreCount,coinCount,lifeCount);
+        //     transform.position = new Vector3(500,500,0);
+        //     lifeCount--;
+        //     GameMengr.instance.CheckGameStatus(scoreCount,coinCount,lifeCount);
             
-        }
+        // }
     }
 }

@@ -598,8 +598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caba54c184355f0439f2bed17b928c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1939289109}
-  coinText: {fileID: 761082051}
+  scoreText: {fileID: 761082051}
+  coinText: {fileID: 1939289109}
 --- !u!4 &1631080498
 Transform:
   m_ObjectHideFlags: 0

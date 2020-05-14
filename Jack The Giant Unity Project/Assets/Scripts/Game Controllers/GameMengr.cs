@@ -76,6 +76,48 @@ public class GameMengr : MonoBehaviour
 
    public void CheckGameStatus(int score,int coinScore,int lifeScore){
        if(lifeScore < 0){
+           if(GamePreferences.GetEasyDifficultyState() == 1){
+               int highScore = GamePreferences.GetEasyDifficultyHighscore();
+               int coinHighScore  = GamePreferences.GetEasyDifficultyCoinScore();
+
+               if(highScore<score){
+                   GamePreferences.SetEasyDifficultyHighscore(score);
+               }
+
+               if(coinHighScore<coinScore){
+                   GamePreferences.SetEasyDifficultyCoinScore(coinScore);
+               }
+           }
+
+           //Medium
+
+           if(GamePreferences.GetMediumDifficultyState() == 1){
+               int highScore = GamePreferences.GetMediumDifficultyHighscore();
+               int coinHighScore  = GamePreferences.GetMediumDifficultyCoinScore();
+
+               if(highScore<score){
+                   GamePreferences.SetMediumDifficultyHighscore(score);
+               }
+
+               if(coinHighScore<coinScore){
+                   GamePreferences.SetMediumDifficultyCoinScore(coinScore);
+               }
+           }
+
+           //High
+
+           if(GamePreferences.GetHardDifficultyState() == 1){
+               int highScore = GamePreferences.GetHardDifficultyHighscore();
+               int coinHighScore  = GamePreferences.GetHardDifficultyCoinScore();
+
+               if(highScore<score){
+                   GamePreferences.SetHardDifficultyHighscore(score);
+               }
+
+               if(coinHighScore<coinScore){
+                   GamePreferences.SetHardDifficultyCoinScore(coinScore);
+               }
+           }
            gameStartedFromMainMenu = false;
            gameRestartedAfterPlayerDied = false;
            GameplayController.instance.GameOverShowPanel(score,coinScore);
