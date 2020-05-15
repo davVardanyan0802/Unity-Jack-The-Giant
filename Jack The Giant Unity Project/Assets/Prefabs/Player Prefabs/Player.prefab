@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5630881950722375548}
   - component: {fileID: 61268207861623142}
   - component: {fileID: 7926389566655087208}
+  - component: {fileID: 3150219892147846204}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -191,3 +192,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinClip: {fileID: 8300000, guid: 63f13d9efa3b54443befc658cf6c3a1b, type: 3}
   lifeClip: {fileID: 8300000, guid: 6c210742c81dc0d409cd2ffc41cf69f3, type: 3}
+--- !u!114 &3150219892147846204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004640237768260889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da3180f1af7302429897c1eda9cc5ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
